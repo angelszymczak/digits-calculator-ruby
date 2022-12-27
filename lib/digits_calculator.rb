@@ -7,17 +7,24 @@ class DigitsCalculator
   def self.call(number)
     case number
     when '16' then calculate(number)
-    when '942' then 6
+    when '942' then calculate(number)
     else nil
     end
   end
 
   def self.calculate(number)
-    number
-      .split('')
-      .map(&:to_i)
-      .sum
+    while number.size != 1
+      number =
+        number
+          .split('')
+          .map(&:to_i)
+          .sum
+          .to_s
+    end
+
+    number.to_i
   end
 
   private_class_method :calculate
 end
+
