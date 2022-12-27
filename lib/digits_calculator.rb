@@ -5,6 +5,8 @@ class DigitsCalculator
   #
   # @returns int
   def self.call(number)
+    raise NonStringArgumentError unless number.is_a?(String)
+
     calculate(number)
   end
 
@@ -22,5 +24,11 @@ class DigitsCalculator
   end
 
   private_class_method :calculate
+
+  class NonStringArgumentError < ArgumentError
+    def initialize
+      super('Non-String argument is not allowed')
+    end
+  end
 end
 
