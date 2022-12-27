@@ -37,7 +37,7 @@ RSpec.describe DigitsCalculator do
   context 'when receiving a non-numeric string parameter' do
     let(:parameter) { 'non-numeric' }
 
-    xit do
+    it do
       expect { subject }
         .to raise_error(described_class::NonNumericArgumentError, 'Non-Numeric String argument is not allowed')
     end

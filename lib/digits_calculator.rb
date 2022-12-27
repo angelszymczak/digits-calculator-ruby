@@ -6,8 +6,13 @@ class DigitsCalculator
   # @returns int
   def self.call(number)
     raise NonStringArgumentError unless number.is_a?(String)
+    Integer(number)
 
     calculate(number)
+  rescue NonStringArgumentError => e
+    raise e
+  rescue ArgumentError => e
+    raise NonNumericArgumentError
   end
 
   def self.calculate(number)
@@ -28,6 +33,12 @@ class DigitsCalculator
   class NonStringArgumentError < ArgumentError
     def initialize
       super('Non-String argument is not allowed')
+    end
+  end
+
+  class NonNumericArgumentError < ArgumentError
+    def initialize
+      super('Non-Numeric String argument is not allowed')
     end
   end
 end
