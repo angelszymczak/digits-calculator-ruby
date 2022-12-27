@@ -10,4 +10,10 @@ RSpec.describe DigitsCalculator do
 
     it { is_expected.to eq(7) }
   end 
+
+  context 'when receiving 942' do
+    let(:parameter) { '942' }
+
+    it { is_expected.to eq(6) }
+  end 
 end
