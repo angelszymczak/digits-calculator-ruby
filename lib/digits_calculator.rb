@@ -5,11 +5,7 @@ class DigitsCalculator
   #
   # @returns int
   def self.call(number)
-    case number
-    when '16' then calculate(number)
-    when '942' then calculate(number)
-    else nil
-    end
+    calculate(number)
   end
 
   def self.calculate(number)
