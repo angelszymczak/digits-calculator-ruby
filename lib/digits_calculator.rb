@@ -1,5 +1,10 @@
 # frozen_string_literal:true
 
+require 'logger'
+
+$logger = Logger.new(STDOUT)
+$logger.level = Logger::INFO
+
 class DigitsCalculator
   # @number: String
   #
@@ -10,8 +15,10 @@ class DigitsCalculator
 
     calculate(number)
   rescue NonStringArgumentError => e
+    $logger.error(e.message)
     raise e
   rescue ArgumentError => e
+    $logger.error(e.message)
     raise NonNumericArgumentError
   end
 

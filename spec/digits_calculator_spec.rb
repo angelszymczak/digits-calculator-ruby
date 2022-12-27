@@ -29,8 +29,10 @@ RSpec.describe DigitsCalculator do
     let(:parameter) { 16 }
 
     it do
-      expect { subject }
-        .to raise_error(described_class::NonStringArgumentError, 'Non-String argument is not allowed')
+      expect do
+        expect_any_instance_of(Logger).to receive(:error)
+        subject
+      end.to raise_error(described_class::NonStringArgumentError, 'Non-String argument is not allowed')
     end
   end
 
@@ -38,8 +40,10 @@ RSpec.describe DigitsCalculator do
     let(:parameter) { 'non-numeric' }
 
     it do
-      expect { subject }
-        .to raise_error(described_class::NonNumericArgumentError, 'Non-Numeric String argument is not allowed')
+      expect do
+        expect_any_instance_of(Logger).to receive(:error)
+        subject
+      end.to raise_error(described_class::NonNumericArgumentError, 'Non-Numeric String argument is not allowed')
     end
   end
 end
